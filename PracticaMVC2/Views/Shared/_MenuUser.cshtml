@@ -1,0 +1,41 @@
+﻿@{
+    int carrito=0;
+    if (Context.Session.GetObject<List<int>>("IDSLIBROS")!=null)
+    {
+         carrito = Context.Session.GetObject<List<int>>("IDSLIBROS").Count;
+    }
+}﻿
+@if (Context.User.Identity.IsAuthenticated == false){
+    <li class="nav-item">
+        <a class="nav-link text-dark" 
+            asp-controller="Usuario" 
+            asp-action="Perfil">
+            Log In
+        </a>
+    </li>
+}else{
+    <li class="nav-item">
+        <a class="nav-link text-dark"
+            asp-controller="Managed"
+            asp-action="Logout">
+            Log Out <span style="color:fuchsia">
+                @Context.User.Identity.Name
+            </span>
+        </a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link text-dark"
+           asp-controller="Usuario"
+           asp-action="Perfil">
+            Perfil
+        </a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link text-dark"
+           asp-controller="Libros"
+           asp-action="CarritoDevolver">
+            Carrito: @carrito
+        </a>
+    </li>
+    
+}

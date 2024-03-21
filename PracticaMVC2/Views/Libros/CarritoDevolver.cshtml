@@ -1,0 +1,79 @@
+﻿@model IEnumerable<PracticaMVC2.Models.Libro>
+
+@{
+    ViewData["Title"] = "CarritoDevolver";
+}
+
+<h1>CarritoDevolver</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.IdLibro)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Titulo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Autor)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Editorial)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Portada)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Resumen)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Precio)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdGenero)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdLibro)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Titulo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Autor)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Editorial)
+            </td>
+                <td>
+                    <img src="~/images/@(item.Portada)" height="150px" />
+                </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Resumen)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Precio)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdGenero)
+            </td>
+                <td>
+                    <a asp-controller="Libros"
+                       asp-action="Comprando"
+                       class="btn btn-danger">
+                        Confirmar pedido
+                    </a>
+                </td>
+        </tr>
+}
+    </tbody>
+</table>
